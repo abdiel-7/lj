@@ -1,0 +1,971 @@
+\documentclass[11pt]{article}
+\usepackage{amsfonts}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath, xspace}
+\usepackage{blkarray}
+\usepackage{bm}
+\usepackage{cancel}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{mathdots}
+\usepackage{mathrsfs}
+\usepackage{multicol}
+\usepackage{stmaryrd}
+%\usepackage{youngtab}
+\usepackage{ytableau}
+%\usepackage{refcheck}
+\usepackage[all]{xy}
+%\usepackage[neveradjust]{paralist}
+\usepackage{amsthm, amssymb, graphicx}
+\usepackage[plainpages]{hyperref}
+
+\usepackage{lscape}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{
+language=Python, 
+numbers=left, 
+numberstyle=\tiny\color{gray}, 
+keywordstyle=\color{blue!70}, 
+commentstyle=\color{green!50!black}, 
+stringstyle=\color{red!60!brown}, 
+backgroundcolor=\color{gray!10}, 
+frame=single,
+breaklines=true, 
+tabsize=4
+}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\theoremstyle{Definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{remark}[thm]{Remark}
+\theoremstyle{example}
+\newtheorem{example}{Example}[section]
+\newtheorem*{question}{Question}
+\newtheorem{conj}[thm]{Conjecture}
+\theoremstyle{remark}
+\newtheorem*{ack}{Acknowledgments}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{1in} 
+\addtolength{\evensidemargin}{-1in}
+\setlength{\oddsidemargin}{1in} 
+\addtolength{\oddsidemargin}{-1in} 
+\setlength{\topmargin}{1in} 
+\addtolength{\topmargin}{-1.5in}
+
+\setlength{\textwidth}{17cm} \setlength{\textheight}{23cm}
+\setlength{\headwidth}{14cm}
+\setlength{\headheight}{13.6pt}
+
+\providecommand{\keywords}[1]{\textbf{\textit{Key words---}} #1}
+\newcommand{\btimes}{\mathbin{\rotatebox[origin=c]{90}{$\ltimes$}}}
+\newcommand{\utimes}{\mathbin{\rotatebox[origin=c]{-90}{$\ltimes$}}}
+
+\def\cA{\mathcal{A}}
+\def\cB{\mathcal{B}}
+\def\cC{\mathcal{C}}
+\def\cD{\mathcal{D}}
+\def\cE{\mathcal{E}}
+\def\cF{\mathcal{F}}
+\def\cG{\mathcal{G}}
+\def\cH{\mathcal{H}}
+\def\cI{\mathcal{I}}
+\def\cJ{\mathcal{J}}
+\def\cK{\mathcal{K}}
+\def\cL{\mathcal{L}}
+\def\cM{\mathcal{M}}
+\def\cN{\mathcal{N}}
+\def\cO{\mathcal{O}}
+\def\cP{\mathcal{P}}
+\def\cQ{\mathcal{Q}}
+\def\cR{\mathcal{R}}
+\def\cS{\mathcal{S}}
+\def\cT{\mathcal{T}}
+\def\cU{\mathcal{U}}
+\def\cV{\mathcal{V}}
+\def\cW{\mathcal{W}}
+\def\cX{\mathcal{X}}
+\def\cY{\mathcal{Y}}
+\def\cZ{\mathcal{Z}}
+
+\def\AA{\mathbb{A}}
+\def\BB{\mathbb{B}}
+\def\CC{\mathbb{C}}
+\def\DD{\mathbb{D}}
+\def\EE{\mathbb{E}}
+\def\FF{\mathbb{F}}
+\def\GG{\mathbb{G}}
+\def\HH{\mathbb{H}}
+\def\II{\mathbb{I}}
+\def\JJ{\mathbb{J}}
+\def\KK{\mathbb{K}}
+\def\LL{\mathbb{L}}
+\def\MM{\mathbb{M}}
+\def\NN{\mathbb{N}}
+\def\OO{\mathbb{O}}
+\def\PP{\mathbb{P}}
+\def\QQ{\mathbb{Q}}
+\def\RR{\mathbb{R}}
+\def\SS{\mathbb{S}}
+\def\TT{\mathbb{T}}
+\def\UU{\mathbb{U}}
+\def\VV{\mathbb{V}}
+\def\WW{\mathbb{W}}
+\def\XX{\mathbb{X}}
+\def\YY{\mathbb{Y}}
+\def\ZZ{\mathbb{Z}}
+
+
+
+\def\fa{\mathfrak{a}}
+\def\fb{\mathfrak{b}}
+\def\fc{\mathfrak{c}}
+\def\fd{\mathfrak{d}}
+\def\fe{\mathfrak{e}}
+\def\ff{\mathfrak{f}}
+\def\fg{\mathfrak{g}}
+\def\fh{\mathfrak{h}}
+\def\fj{\mathfrak{j}}
+\def\fk{\mathfrak{k}}
+\def\fl{\mathfrak{l}}
+\def\fm{\mathfrak{m}}
+\def\fn{\mathfrak{n}}
+\def\fo{\mathfrak{o}}
+\def\fp{\mathfrak{p}}
+\def\fq{\mathfrak{q}}
+\def\fr{\mathfrak{r}}
+\def\fs{\mathfrak{s}}
+\def\ft{\mathfrak{t}}
+\def\fu{\mathfrak{u}}
+\def\fv{\mathfrak{v}}
+\def\fw{\mathfrak{w}}
+\def\fx{\mathfrak{x}}
+\def\fy{\mathfrak{y}}
+\def\fz{\mathfrak{z}}
+
+
+\def\fU{\mathfrak{U}}
+
+\def\fgl{\mathfrak{gl}}
+\def\fsl{\mathfrak{sl}}
+
+\def\ad{\mathrm{ad}}
+\def\Aut{\mathrm{Aut}}
+\def\Card{\mathrm{Card}}
+\def\diag{\mathrm{diag}}
+\def\dim{\mathrm{dim}}
+\def\End{\mathrm{End}}
+\def\ev{\mathrm{ev}}
+\def\Hom{\mathrm{Hom}}
+\def\GL{\mathrm{GL}}
+\def\id{\mathrm{id}}
+\def\Ind{\mathrm{Ind}}
+\def\ind{\mathrm{ind}}
+\def\Inf{\mathrm{Inf}}
+\def\Irr{\mathrm{Irr}}
+\def\Rad{\mathrm{Rad}}
+\def\Res{\mathrm{Res}}
+\def\Resf{\mathrm{Resf}}
+\def\tr{\mathrm{tr}}
+\def\height{\mathrm{ht}}
+\def\Tr{\mathrm{Tr}}
+\def\wt{\mathrm{wt}}
+
+
+%%%%% Diagrams %%%%% 
+\usepackage{etex} %fixes the fight that pictex has with every other drawing package
+\usepackage{pictexwd}
+%\input xy
+%\xyoption{all}
+\usepackage{tikz}
+	\usepgflibrary[patterns] % ConTEXt and pure pgf 
+	\usetikzlibrary{patterns} % LATEX and plain TEX when using TikZ 
+	\usepgflibrary{shapes.geometric}
+        \usetikzlibrary{arrows, calc, positioning}
+
+\newcommand{\TikZ}[1]{
+\begin{matrix}\begin{tikzpicture}#1\end{tikzpicture}\end{matrix}
+}
+
+\def\ShiftX{\pgftransformxshift}
+\def\ShiftY{\pgftransformyshift}
+
+%PARTITIONS
+\newcounter{r}
+\newcounter{s}
+
+
+
+
+%Shortcut for a partition, to be used in TikZ environment.
+%Example: \begin{tikzpicture} \Part{5,4,2} \end{tikzpicture}
+\newcommand\Part[1]{
+        \setcounter{r}{1}
+	 \foreach \x in {#1}{
+ 	{\ifnum\value{r}=1
+		\draw (0,\value{r}-1)--(\x,\value{r}-1); 
+		\fi}
+	\draw (0,\value{r}) to (\x,\value{r});
+   	\foreach \y in {0, ..., \x} {\draw (\y,\value{r})--(\y,\value{r}-1);}
+	\addtocounter{r}{1}
+ }}
+ \def\PartUNIT{.175}
+%Self-contained tikz images for \Part above, to be used in math mode.
+%Example: $\PART{5,4,2}$ or $\sPART{5,4,2}$
+\newcommand{\PART}[1]{%Good for displayed, moderate sized partitions.
+\begin{matrix}
+\begin{tikzpicture}[scale=.35, yscale=-1] 
+	\Part{#1}\node at (.5,0){};
+\end{tikzpicture}
+\end{matrix}
+}
+\newcommand{\sPART}[1]{%Good for subscripts.
+\begin{matrix}
+\begin{tikzpicture}[scale=.175, yscale=-1] 
+	\Part{#1}\node at (.5,0){};
+\end{tikzpicture}
+\end{matrix}
+}
+
+%Outline of a partition. Use in tikzpicture environment. 
+%Example: \begin{tikzpicture} \EmptyPart{5,4,2} \end{tikzpicture}
+\newcommand\EmptyPart[1]{
+        \setcounter{r}{0}
+        \setcounter{s}{0}
+	 \foreach \x in {#1}{
+	 \draw (\value{s}, \value{r}) to (\x, \value{r}) to (\x, \value{r}+1);
+%   	\foreach \y in {0, ..., \x} {\draw (\y,\value{r})--(\y,\value{r}-1);}
+	\addtocounter{r}{1}
+        \setcounter{s}{\x}
+ }
+ \draw (\value{s}, \value{r}) to (0, \value{r}) to (0,0);
+ }
+ %Stand-alone code for \EmptyPart. Use in math environment.
+ %Example: $\ePART{5,4,2}$
+ \newcommand{\ePART}[1]{
+\begin{matrix}
+\begin{tikzpicture}[scale=.35, yscale=-1] 
+	\EmptyPart{#1}\node at (.5,0){};
+\end{tikzpicture}
+\end{matrix}
+}
+ 
+%Shortcut for a tableau, to be used in TikZ environment.
+%Example: \begin{tikzpicture} \Tableau{{1,1,1,2,3},{2,2,4,4},{3,4}} \end{tikzpicture}
+\newcommand\Tableau[1]{
+        \foreach \x [count = \c from 1] in {#1} {
+		\foreach \y [count = \d from 1] in \x{
+			\node at (\d-.5,\c-.5) {\scriptsize$\y$}; %Want to change the color of the numbers? insert \color{???} just after \scriptsize
+			\draw (\d,\c) to (\d,\c-1);
+			{\ifnum\d=1
+				\draw (0,\c) to (0,\c-1);
+				\fi}
+			\setcounter{r}{\d}
+		}
+		{\ifnum\c=1
+			\draw (0,0)--(\value{r},0);
+			\fi}
+		\draw(0,\c) to (\value{r},\c);
+		\setcounter{s}{\c}}}
+		
+ %Stand-alone code for \Tableau. Use in math environment.
+ %Best for displayed environments.
+ %Example: $\TBL{{1,1,1,2,3},{2,2,4,4},{3,4}}$
+\newcommand{\TBL}[1]{
+\begin{matrix}
+\begin{tikzpicture}[scale=.35, yscale=-1] 
+	\Tableau{#1}\node at (.5,0){};
+\end{tikzpicture}
+\end{matrix}
+}
+%Shortcut for a small tableau, to be used in TikZ environment.
+% Best for in-line or subscripts.
+%Example: \begin{tikzpicture} \sTableau{{1,1,1,2,3},{2,2,4,4},{3,4}} \end{tikzpicture}
+\newcommand\sTableau[1]{
+        \foreach \x [count = \c from 1] in {#1} {
+		\foreach \y [count = \d from 1] in \x{
+			\node at (\d-.5,\c-.5) {\tiny$\y$}; %Want to change the color of the numbers? insert \color{???} just after \scriptsize
+			\draw (\d,\c) to (\d,\c-1);
+			{\ifnum\d=1
+				\draw (0,\c) to (0,\c-1);
+				\fi}
+			\setcounter{r}{\d}
+		}
+		{\ifnum\c=1
+			\draw (0,0)--(\value{r},0);
+			\fi}
+		\draw(0,\c) to (\value{r},\c);
+		\setcounter{s}{\c}}}
+%Stand-alone code for \sTableau. Use in math environment.
+%Best for in-line or subscripts.
+%Example: $\sTBL{{1,1,1,2,3},{2,2,4,4},{3,4}}$		
+\newcommand{\sTBL}[1]{
+\begin{matrix}
+\begin{tikzpicture}[scale=.25, yscale=-1] 
+	\sTableau{#1}\node at (.5,0){};
+\end{tikzpicture}
+\end{matrix}
+}
+
+
+
+\newcommand{\PartB}[1]{
+ \foreach \x [count=\s from 1] in {#1}{
+ 	{\ifnum\s=1
+		\draw (0,\s-1)--(\x,\s-1); 
+		\fi}
+   \draw (0,\s) to (\x,\s);
+   \foreach \y in {0, ..., \x} {\draw (\y,\s)--(\y,\s-1);}
+ }}
+
+\def\UNITB{.25} %Sets the scale of your partitions 
+%Whenever there's "yscale = - ...", that turns  the coordinates upside-down, to agree with how we count rows of partitions. 
+
+%Self-contained tikz images for \Part and \fPart above. 
+\newcommand{\PARTB}[1]{
+\begin{tikzpicture}[xscale=\UNITB, yscale=-\UNITB] 
+	\Part{#1}
+\end{tikzpicture}
+}
+\newcommand{\fPARTB}[2]{
+\begin{tikzpicture}[xscale=\UNITB, yscale=-\UNITB]
+	\fPart{#1}{#2}
+\end{tikzpicture}
+}
+%This is the lattice behind all the examples below. 
+\def\Lattice{
+%Sets the coordinates for the partitions of 0 to 5, grouped by level. Adjust y-coordinates to spread out levels piecemeal, or just adjust overall yscale in the TikZ environment.
+	\coordinate (0) at (0,.4); %level 0
+	\coordinate (11) at (0,1.2); %level 1
+	\coordinate (21) at (-1,2);\coordinate (22) at (1,2); %level 2
+	\foreach \x in {1, ..., 3}{\coordinate (3\x) at (-4+2*\x,3);} %level 3
+	\foreach \x in {1, ..., 5}{\coordinate (4\x) at (-6+2*\x,4.5);} %level 4
+	\foreach \x in {1, ..., 7}{\coordinate (5\x) at (-8+2*\x,6);} %level 5
+%edges in lattice:
+	%level 0 -> 1
+	\draw (0) to node[left] {$a$} (11); 
+	%level 1 -> 2
+	\draw (11) to node[above left] {$b$} (21) 
+		(11) to node[above right] {$c$} (22);
+	\draw (21) to node[above left] {$e$} (31) 
+	%level 2 -> 3
+		(21) to node[below left] {$f$} (32) 
+		(22) to node[above left] {$g$} (32) 
+		(22) to node[above right] {$h$} (33);
+	%level 3 -> 4
+	\draw (31) to node[above left] {$i$}  (41) 
+		(31) to node[left] {$j$}  (42) 
+		(32) to node[above left] {$k$}  (42) 
+		(32) to node[left] {$l$}  (43) 
+		(32) to node[above right] {$m$}  (44) 
+		(33) to node[right] {$n$}  (44) 
+		(33) to node[above right] {$o$}  (45);
+	%level 4 -> 5
+	\draw (41) to node[left] {$p$}  (51) 
+		(41) to node[left] {$q$}  (52) 
+		(42) to node[left] {$r$}  (52) 
+		(42) to node[left] {$s$}  (53) 
+		(42) to[bend left=5] node[pos=.35, above right] {$t$}  (54) 
+		(43) to[bend right=5] node[pos=.35, below right] {$u$}  (53)
+		(43) to[bend left=5] node[pos=.35, above right] {$v$}  (55) 
+		(44) to[bend right=5] node[pos=.35, below right] {$w$}  (54) 
+		(44) to[bend right=5] node[right] {$x$}  (55) 
+		(44) to node[above right] {$y$}  (56) 
+		(45) to node[right] {$z$}  (56) 
+		(45) to node[above right] {$?$}  (57);
+%partitions in lattice:
+\begin{scope}[every node/.style={fill=white}]
+	%level 0
+	\node at (0) {$\emptyset$};
+	%level 1
+	\node at (11) {\PARTB{1}};
+	%level 2
+	\node at (22) {\PARTB{1,1}};
+	\node at (21) {\PARTB{2}};
+	%level 3
+	\node at (33) {\PARTB{1,1,1}};
+	\node at (32) {\PARTB{2,1}};
+	\node at (31) {\PARTB{3}};
+	%level 4
+	\node at (45) {\PARTB{1,1,1,1}};
+	\node at (44) {\PARTB{2,1,1}};
+	\node at (43) {\PARTB{2,2}};
+	\node at (42) {\PARTB{3,1}};
+	\node at (41) {\PARTB{4}};
+	%level 5
+	\node at (57) {\PARTB{1,1,1,1,1}};
+	\node at (56) {\PARTB{2,1,1,1}};
+	\node at (55) {\PARTB{2,2,1}};
+	\node at (54) {\PARTB{3,1,1}};
+	\node at (53) {\PARTB{3,2}};
+	\node at (52) {\PARTB{4,1}};
+	\node at (51) {\PARTB{5}};
+\end{scope}
+\foreach \x in {-4,0,4} {\node at (\x , 6.75) {$\vdots$}; }
+}
+
+%%%%%% Diagrams %%%%% 
+%\usepackage{etex} %fixes the fight that pictex has with every other drawing package
+%\usepackage{pictexwd}
+%\usepackage{tikz}
+%\usepgflibrary{shapes.geometric}
+%\usetikzlibrary{arrows, calc, positioning}
+%%\usetikzlibrary{arrows}
+%\def\ShiftX{\pgftransformxshift}
+%\def\ShiftY{\pgftransformyshift}
+
+\tikzstyle{V}=[draw, fill =black, circle, inner sep=0pt, minimum size=1.5pt]
+\tikzstyle{wV}=[draw, fill =white, circle, inner sep=0pt, minimum size=4.5pt]
+\tikzstyle{bV}=[draw, fill =black, circle, inner sep=0pt, minimum size=4.5pt]
+\tikzstyle{over}=[draw=white,double=black,line width=2pt, double distance=.5pt]
+
+
+%BRAIDS:
+\def\Over[#1,#2][#3,#4]{ %1,2=start position; 3,4=end position
+	\draw[style=over]   (#2,#1) .. controls ++(#4*.5-#2*.5,0) and ++(-#4*.5+#2*.5,0) .. (#4,#3);}
+\def\Under[#1,#2][#3,#4]{ %1,2=start position; 3,4=end position
+	\draw  (#2,#1) .. controls ++(#4*.5-#2*.5,0) and ++(-#4*.5+#2*.5,0) .. (#4,#3);}
+\def\Cross[#1,#2][#3,#4]{%Mimic over, under follows
+	\Under[#3,#2][#1,#4]\Over[#1,#2][#3,#4]}
+%\def\Over[#1,#2][#3,#4]{ %1,2=start position; 3,4=end position
+%	\draw[style=over]   (#1,#2) .. controls ++(0,#4*.5-#2*.5) and ++(0,-#4*.5+#2*.5) .. (#3,#4);}
+%\def\Under[#1,#2][#3,#4]{ %1,2=start position; 3,4=end position
+%	\draw  (#1,#2) .. controls ++(0,#4*.5-#2*.5) and ++(0,-#4*.5+#2*.5) .. (#3,#4);}
+%\def\Cross[#1,#2][#3,#4]{%Mimic over, under follows
+%	\Under[#3,#2][#1,#4]\Over[#1,#2][#3,#4]}
+
+
+%\def\Ez[#1]{\draw [over, bend left=75] (1,#1+1) to (1-.4,#1+.7)  (1-.4,#1+.3)  to (1,#1) ;
+%		\draw[densely dotted]  (1-.4,#1)--(1-.4,#1+1) ; \node[V] at (1-.4,#1+.3){}; \node[V] at  (1-.4,#1+.7){};}
+%\def\Ek[#1][#2]{\draw [over, bend right=75] (#2,#1+1) to (#2+.4,#1+.7)  (#2+.4,#1+.3)  to (#2,#1) ;
+%		\draw[densely dotted]  (#2+.4,#1)--(#2+.4,#1+1) ; \node[V] at (#2+.4,#1+.3){}; \node[V] at  (#2+.4,#1+.7){};}
+
+\def\Tops[#1][#2][#3]{%1=pole locations, 2=top, 3=k 
+	\foreach\x in {#1}{
+		\draw (#2,\x+.15) -- (#2+.1, \x+.15) (#2, \x-.15) -- (#2+.1, \x-.15) ;
+		\draw (#2+.1,\x) arc (0:360:.75mm and 1.5mm);}
+	%Nodes 
+	\foreach \x in {1,...,#3} {\draw (#2,\x)  to (#2+.05,\x); \node[V] at (#2+.05,\x){};}
+	}
+\def\Bottoms[#1][#2][#3]{%1=pole locations, 2 = bottom, 3=top 
+	\foreach\x in {#1}{
+		\draw (#2, \x+.15) -- (#2-.1, \x+.15) (#2, \x-.15) -- (#2-.1, \x-.15) ;
+		\draw (#2-.1, \x+.15) arc (90:270:.75mm and 1.5mm);}
+	%Nodes 
+	\foreach \x in {1,...,#3} {\draw (#2, \x)  to (#2-.05, \x); \node[V] at (#2-.05, \x){};}
+	}
+\def\Caps[#1][#2,#3][#4]{%1=pole locations, 2 = bottom, 3=top, 4=k 
+	\Tops[#1][#3][#4]
+	\Bottoms[#1][#2][#4]
+	}
+\def\Pole[#1][#2,#3]{%1=horizontal location, 2 = bottom, 3=top
+	\shade[left color=white,right color=white] (#2,#1+.15) rectangle (#3,#1-.15);
+	\draw[over] (#2,#1+.15) to (#3,#1+.15) (#2,#1-.15) to (#3,#1-.15) ;}
+\def\Label[#1,#2][#3][#4]{%1,2 = top/bot position, 3=i, 4=label
+	\node[right] at (#2+.1,#3) {#4};
+	\node[left] at (#1-.1,#3) {#4};		}
+\def\Nodes[#1][#2]{
+	 \foreach \x in {1,...,#2} {\node[V] at (#1,\x){};	}
+	}
+\def\PoleCaps[#1][#2,#3]{%1=pole location, 2 = bottom, 3=top, 4=k 
+	\foreach\x in {#1}{
+		\draw (#2,\x+.15) -- (#2-.1,\x+.15) (#2,\x-.15) -- (#2-.1,\x-.15) ;
+		\draw (#2-.1,\x+.15) arc (0:-180:1.5mm and .75mm);}
+	\foreach\x in {#1}{
+		\draw (#3,\x+.15) -- (#3+.1,\x+.15) (#3,\x-.15) -- (#3+.1,\x-.15) ;
+		\draw (#3+.1,\x+.15) arc (0:360:1.5mm and .75mm);}
+	}
+\def\PoleTwist[#1,#2]{%1 = bottom, 2=top
+	\foreach \x/\y in {-1/1L, -.7/1R, 0/2L, .3/2R}{\coordinate(T\y) at (#2,\x); \coordinate(B\y) at (#1,\x);}
+	\draw[thin] (B1R) .. controls ++(#2*.5-#1*.5-.1,0) and ++(-#2*.5+#1*.5-.1,0) ..  (T2R)
+			(B1L)   .. controls ++(#2*.5-#1*.5+.1,0) and ++(-#2*.5+#1*.5+.1,0) ..    (T2L) ;
+	\draw[line width=2pt, white]
+			(#1,.15)  .. controls +(#2*.5-#1*.5,0) and +(-#2*.5+#1*.5,0) ..   (#2,-.85) ;
+	\draw[thin,over] 
+		(B2R) .. controls ++(#2*.5-#1*.5+.1,0) and ++(-#2*.5+#1*.5+.1,0) ..  (T1R) 
+			(B2L)  .. controls +(#2*.5-#1*.5-.1,0) and +(-#2*.5+#1*.5-.1,0) ..   (T1L) ;
+			}
+
+
+\def\SymPolesCaps[#1,#2][#3]{%1 = Vertical position, 2=k
+	\draw (#1,.3) -- (#1-.1,.3) (#1,.15) -- (#1-.1, .15) ;
+	\draw (#1-.1, .3) arc (0:-180:2pt and 1.5pt);
+	\draw (#1,#3+.7) -- (#1-.1,#3+.7) (#1,#3+.85) -- (#1-.1,#3+.85) ;
+	\draw (#1-.1,#3+.85)  arc (0:-180:2pt and 1.5pt);
+	\draw (#2,.3) -- (#2+.1, .3) (#2, .15) -- (#2+.1, .15) ;
+	\draw (#2+.1, .3) arc (0:360:2pt and 1.5pt);
+	\draw (#2, #3+.7) -- (#2+.1, #3+.7) (#2, #3+.85) -- (#2+.1, #3+.85) ;
+	\draw (#2+.1, #3+.85) arc (0:360:2pt and 1.5pt);}
+
+
+%************Commutative diagrams**********************
+
+\def\mapright#1{\smash{\mathop
+        {\longrightarrow}\limits^{#1}}}
+
+\def\mapleftright#1{\smash{\mathop
+        {\longleftrightarrow}\limits^{#1}}}
+
+
+\def\mapsrightto#1{\smash{\mathop
+        {\longmapsto}\limits^{#1}}}
+
+\def\mapleft#1{\smash{
+   \mathop{\longleftarrow}\limits^{#1}}}
+
+\def\mapdown#1{\Big\downarrow
+   \rlap{$\vcenter{\hbox{$\scriptstyle#1$}}$}}
+
+\def\lmapdown#1{{\hbox{$\scriptstyle#1$}}
+\llap {$\vcenter{\hbox{\Big\downarrow}}$} }
+
+\def\mapupdown#1{\Big\updownarrow
+   \rlap{$\vcenter{\hbox{$\scriptstyle#1$}}$}}
+
+\def\lmapupdown#1{{\hbox{$\scriptstyle#1$}}
+\llap {$\vcenter{\hbox{\Big\updownarrow}}$} }
+
+\def\mapup#1{\Big\uparrow
+   \rlap{$\vcenter{\hbox{$\scriptstyle#1$}}$}}
+\def\mapne#1{\Big\nearrow
+   \rlap{$\vcenter{\hbox{$\scriptstyle#1$}}$}}
+\def\mapse#1{
+%{$\vcenter{
+\hbox{$\scriptstyle#1$}
+%$}
+\rlap{ $\vcenter{\hbox{$\searrow$}}$ }  }
+\def\mapnw#1{\Big\nwarrow
+   \rlap{$\vcenter{\hbox{$\scriptstyle#1$}}$}}
+\def\mapsw#1{
+%\Big
+\swarrow
+   \rlap{$\vcenter{\hbox{$\scriptstyle#1$}}$}}
+
+
+\newcommand{\posleq}[1]{
+	\hspace{0.1cm}
+	\begin{tikzpicture}
+	\draw (-0.8ex, -0.5ex) -- (0.8ex, -0.5ex);
+	\draw (-0.8ex, 0.4ex) -- (0.7ex, -0.2ex);
+	\draw (-0.8ex, 0.4ex) -- (0.7ex, 1ex);
+	\draw (0.4ex,0.4ex) --(1.1ex, 0.4ex);
+	\draw (0.75ex,0.75ex) --(0.75ex, 0.05ex);
+	\end{tikzpicture}
+	\hspace{0.1cm}
+	}
+\newcommand{\negleq}[1]{
+	\hspace{0.1cm}
+	\begin{tikzpicture}
+	\draw (-0.8ex, -0.5ex) -- (0.8ex, -0.5ex);
+	\draw (-0.8ex, 0.4ex) -- (0.7ex, -0.2ex);
+	\draw (-0.8ex, 0.4ex) -- (0.7ex, 1ex);
+	\draw (0.4ex,0.4ex) --(1.1ex, 0.4ex);
+	\end{tikzpicture}
+	\hspace{0.1cm}
+	}
+	
+\newcommand{\zeroleq}[1]{
+	\hspace{0.1cm}
+	\begin{tikzpicture}
+	\draw (-0.8ex, -0.5ex) -- (0.8ex, -0.5ex);
+	\draw (-0.8ex, 0.4ex) -- (0.7ex, -0.2ex);
+	\draw (-0.8ex, 0.4ex) -- (0.7ex, 1ex);
+	\draw  (0.75ex,0.4ex) ellipse (0.2ex and 0.35ex);
+	\end{tikzpicture}
+	\hspace{0.1cm}
+	}
+	
+\newcommand{\posgeq}[1]{
+	\hspace{0.1cm}
+	\begin{tikzpicture}
+	\draw (-0.8ex, -0.5ex) -- (0.8ex, -0.5ex);
+	\draw (0.8ex, 0.4ex) -- (-0.7ex, -0.2ex);
+	\draw (0.8ex, 0.4ex) -- (-0.7ex, 1ex);
+	\draw (-0.4ex,0.4ex) --(-1.1ex, 0.4ex);
+	\draw (-0.75ex,0.75ex) --(-0.75ex, 0.05ex);
+	\end{tikzpicture}
+	\hspace{0.1cm}
+	}
+\newcommand{\neggeq}[1]{
+	\hspace{0.1cm}
+	\begin{tikzpicture}
+	\draw (-0.8ex, -0.5ex) -- (0.8ex, -0.5ex);
+	\draw (0.8ex, 0.4ex) -- (-0.7ex, -0.2ex);
+	\draw (0.8ex, 0.4ex) -- (-0.7ex, 1ex);
+	\draw (-0.4ex,0.4ex) --(-1.1ex, 0.4ex);
+	\end{tikzpicture}
+	\hspace{0.1cm}
+	}
+	
+\newcommand{\zerogeq}[1]{
+	\hspace{0.1cm}
+	\begin{tikzpicture}
+	\draw (-0.8ex, -0.5ex) -- (0.8ex, -0.5ex);
+	\draw (0.8ex, 0.4ex) -- (-0.7ex, -0.2ex);
+	\draw (0.8ex, 0.4ex) -- (-0.7ex, 1ex);
+	\draw  (-0.75ex,0.4ex) ellipse (0.2ex and 0.35ex);
+	\end{tikzpicture}
+	\hspace{0.1cm}
+	}
+
+\newcommand{\posl}[1]{
+	\hspace{0.1cm}
+	\begin{tikzpicture}
+	\draw (-0.8ex, 0.4ex) -- (0.7ex, -0.2ex);
+	\draw (-0.8ex, 0.4ex) -- (0.7ex, 1ex);
+	\draw (0.4ex,0.4ex) --(1.1ex, 0.4ex);
+	\draw (0.75ex,0.75ex) --(0.75ex, 0.05ex);
+	\end{tikzpicture}
+	\hspace{0.1cm}
+	}
+\newcommand{\negl}[1]{
+	\hspace{0.1cm}
+	\begin{tikzpicture}
+	\draw (-0.8ex, 0.4ex) -- (0.7ex, -0.2ex);
+	\draw (-0.8ex, 0.4ex) -- (0.7ex, 1ex);
+	\draw (0.4ex,0.4ex) --(1.1ex, 0.4ex);
+	\end{tikzpicture}
+	\hspace{0.1cm}
+	}
+	
+\newcommand{\zerol}[1]{
+	\hspace{0.1cm}
+	\begin{tikzpicture}
+	\draw (-0.8ex, 0.4ex) -- (0.7ex, -0.2ex);
+	\draw (-0.8ex, 0.4ex) -- (0.7ex, 1ex);
+	\draw  (0.75ex,0.4ex) ellipse (0.2ex and 0.35ex);
+	\end{tikzpicture}
+	\hspace{0.1cm}
+	}
+	
+\newcommand{\posg}[1]{
+	\hspace{0.1cm}
+	\begin{tikzpicture}
+	\draw (0.8ex, 0.4ex) -- (-0.7ex, 1ex);
+	\draw (0.8ex, 0.4ex) -- (-0.7ex, -0.2ex);
+	\draw (-0.4ex,0.4ex) --(-1.1ex, 0.4ex);
+	\draw (-0.75ex,0.75ex) --(-0.75ex, 0.05ex);
+	\end{tikzpicture}
+	\hspace{0.1cm}
+	}
+\newcommand{\negg}[1]{
+	\hspace{0.1cm}
+	\begin{tikzpicture}
+	\draw (0.8ex, 0.4ex) -- (-0.7ex, -0.2ex);
+	\draw (0.8ex, 0.4ex) -- (-0.7ex, 1ex);
+	\draw (-0.4ex,0.4ex) --(-1.1ex, 0.4ex);
+	\end{tikzpicture}
+	\hspace{0.1cm}
+	}
+	
+\newcommand{\zerog}[1]{
+	\hspace{0.1cm}
+	\begin{tikzpicture}
+	\draw (0.8ex, 0.4ex) -- (-0.7ex, -0.2ex);
+	\draw (0.8ex, 0.4ex) -- (-0.7ex, 1ex);
+	\draw  (-0.75ex,0.4ex) ellipse (0.2ex and 0.35ex);
+	\end{tikzpicture}
+	\hspace{0.1cm}
+	}
+\usepackage{soul,color, xcolor} 
+\usepackage[authoryear]{natbib}
+\usepackage{setspace}
+\usepackage{bbm}
+
+\pagestyle{fancy}
+\fancyhf{} 
+\fancyfoot[C]{\thepage} 
+\fancyhead[R]{\mbox{\leftmark}} 
+
+\onehalfspacing
+\bibliographystyle{alpha}
+
+\title{Report about group project part 2}
+\author{Group six: Zihan Lin,Kevin Tran,Brice Arrigo \& Jude Hine}
+\date{\today}
+\usepackage{graphicx} 
+\usepackage{float} 
+\usepackage{subfigure}
+\usepackage{float}
+
+\begin{document}
+\begin{titlepage}
+\vspace*{\stretch{1}}
+\begin{center}
+  {\huge\bfseries Report about group project part 2}                  \\[6.5ex]
+  {\large\bfseries Group six: Zihan Lin,Kevin Tran,Brice Arrigo \& Jude Hine}           \\
+  \today
+\end{center}
+\vspace{\stretch{2}}
+\end{titlepage}
+\newpage
+\begin{abstract}
+This article is a report of part 2 of group project of Computational and combinatorial algebraic topology.
+
+We use python to create a software tool to help me research, which is the attachment "project 2 code of group six".
+
+
+\end{abstract}
+
+~\\
+\tableofcontents
+
+
+\newpage
+\section{Generate a dataset consisting of three classes of point clouds}
+
+The code below generate a point cloud containing 200 points, sampling two disjoint concentric noisy circles.
+\begin{lstlisting}
+def generate_two_disjoint_concentric_noisy_circle(n=200, radius1=1,radius2=2, center=(0, 0), noise_std=0.1):
+  theta = np.random.uniform(0.0, 2.0 * np.pi, size=100)
+  ux = np.cos(theta)
+  uy = np.sin(theta)
+  cx, cy = center
+  base = np.column_stack([cx + radius1 * ux, cy + radius1 * uy])
+  noise = np.random.rand(100,2)
+  points1 = base + noise_std*radius1*noise
+  theta = np.random.uniform(0.0, 2.0 * np.pi, size=100)
+  ux = np.cos(theta)
+  uy = np.sin(theta)
+  cx, cy = center
+  base = np.column_stack([cx + radius2 * ux, cy + radius2 * uy])
+  noise = np.random.rand(100, 2)
+  points2 = base + noise_std * radius1 * noise
+  points = np.vstack([points1, points2])
+  return points
+\end{lstlisting}
+
+The code below generate a point cloud containing 200 points, sampling two disjoint noisy circles that are not nested.
+\begin{lstlisting}
+def generate_two_disjoint_noisy_circle(n=200,radius=1, center1=(0,0), center2=(3,0), noise_std=0.1):
+    theta = np.random.uniform(0.0, 2.0 * np.pi, size=100)
+    ux = np.cos(theta)
+    uy = np.sin(theta)
+    cx1, cy1 = center1
+    base = np.column_stack([cx1 + radius * ux, cy1 + radius * uy])
+    noise = np.random.rand(100, 2)
+    points1 = base + noise_std * radius * noise
+    theta = np.random.uniform(0.0, 2.0 * np.pi, size=100)
+    ux = np.cos(theta)
+    uy = np.sin(theta)
+    cx2, cy2 = center2
+    base = np.column_stack([cx2 + radius * ux, cy2 + radius * uy])
+    noise = np.random.rand(100, 2)
+    points2 = base + noise_std * radius * noise
+    points = np.vstack([points1, points2])
+    return points
+\end{lstlisting}
+
+The code below generate a point cloud containing 200 points, sampling two adjacent noisy circles.
+\begin{lstlisting}
+def generate_two_adjacent_noisy_circle(n=200,radius=1, center1=(0,0), center2=(2,0), noise_std=0.1):
+    theta = np.random.uniform(0.0, 2.0 * np.pi, size=100)
+    ux = np.cos(theta)
+    uy = np.sin(theta)
+    cx1, cy1 = center1
+    base = np.column_stack([cx1 + radius * ux, cy1 + radius * uy])
+    noise = np.random.rand(100, 2)
+    points1 = base + noise_std * radius * noise
+    theta = np.random.uniform(0.0, 2.0 * np.pi, size=100)
+    ux = np.cos(theta)
+    uy = np.sin(theta)
+    cx2, cy2 = center2
+    base = np.column_stack([cx2 + radius * ux, cy2 + radius * uy])
+    noise = np.random.rand(100, 2)
+    points2 = base + noise_std * radius * noise
+    points = np.vstack([points1, points2])
+    return points
+\end{lstlisting}
+
+And then in the "dataset" will contain three classes of point clouds.
+\begin{lstlisting}
+dataset = []
+for i in range(0,3):
+    for j in range(0,100):
+        if i == 0:
+            pc = generate_two_disjoint_concentric_noisy_circle()
+        elif i == 1:
+            pc = generate_two_disjoint_noisy_circle()
+        else:
+            pc = generate_two_adjacent_noisy_circle()
+        dataset.append(pc)
+dataset=np.array(dataset)
+\end{lstlisting}
+  
+\section{Cluster the dataset}
+
+Through persistentence barcode, we could see the difference in persistent homology among the three classes. 
+
+The picture below is persistentence barcode of the point cloud sampling two disjoint concentric noisy circles.
+\begin{figure}[h] 
+\centering 
+\includegraphics[width=1\textwidth]{1} 
+\end{figure}
+
+Its dim-1 barcodes are obviously differ from other two classes whose dim-1 barcodes are just two lines.
+
+\newpage
+The picture below is persistentence barcode of the point cloud sampling two adjacent noisy circles.
+
+\begin{figure}[h] 
+\centering 
+\includegraphics[width=1\textwidth]{3} 
+\end{figure}
+
+It only have one connected component. So other two classes will have more the one long dim-0 barcodes, while two adjacent noisy circles only have 1.
+
+\newpage
+The picture below is persistentence barcode of the point cloud sampling two disjoint noisy circles that are not nested.
+
+\begin{figure}[h] 
+\centering 
+\includegraphics[width=1\textwidth]{2} 
+\end{figure}
+
+The persistentence barcodes show that persistent homology could help us cluster the dataset.
+
+\begin{lstlisting}
+PH = []
+for i in range(0, 300):
+    rips_complex = gudhi.RipsComplex(points=dataset[i])
+    st = rips_complex.create_simplex_tree(max_dimension=2)
+    a = st.persistence()
+    PH.append(ph(a))
+
+PH = np.array(PH)
+kmeans = KMeans(n_clusters=3, random_state=0)
+clusters = kmeans.fit_predict(PH)
+print(clusters)
+\end{lstlisting}
+\newpage
+ph() is just a function to turn persistent homology into vectors for using of  KMeans.
+
+\begin{lstlisting}
+def split_dgms(persistence):
+    dgm0 = []
+    dgm1 = []
+    for dim, (b, d) in persistence:
+        if d == float("inf"):
+            continue
+        if dim == 0:
+            dgm0.append([b, d])
+        elif dim == 1:
+            dgm1.append([b, d])
+    return np.array(dgm0), np.array(dgm1)
+
+
+def diagram_stats(dgm):
+    if len(dgm) == 0:
+        return np.zeros(4)
+    pers = dgm[:,1] - dgm[:,0]
+    return np.array([
+        len(pers), pers.mean(), pers.max(), pers.sum()])
+
+
+def ph(persistence):
+    dgm0, dgm1 = split_dgms(persistence)
+    v0 = diagram_stats(dgm0)
+    v1 = diagram_stats(dgm1)
+    return np.concatenate([v0, v1])
+
+\end{lstlisting}
+
+This code will output one hundred 1, one hundred 0,  one hundred 2.
+
+ We have generated 100 two disjoint concentric noisy circles firstly, then generated 100 two disjoint noisy circles that are not nested before generating 100 two adjacent noisy circles. So this code cluster the dataset successfully.
+
+\section{Noise Influence}
+
+We have set noise=0.1. If the noise is too big, this code will fail. 
+
+If we set noise=0.3, it will still work (although not so correct). But if this increase to 0.5, it can not cluster the dataset anymore. That is because that the distance between two disjoint concentric noisy circles or two disjoint noisy circles that are not nested are both 1. So when noise is over 0.5, the difference in persistence homologies among them will be destoried. For example, two connected components may be considered as one now, which will influnce $PH_0$.
+
+ If we still increase the noise, the persistent homologies of three classes will seem to be same for this code. 
+
+ \section{A noisy circle and addition of “outlier” points}
+The code below generate a point cloud P1 consisting of 200 points, sampling a noisy circle and create a second point cloud P2 by adding 20 “outlier” points to P1. It will also show their persistence diagrams
+\begin{lstlisting}
+def generate_random_points(n=20, xlim=(-1.0, 1.0), ylim=(-1.0, 1.0)):
+ x = np.random.uniform(xlim[0],xlim[1],size=n)
+ y = np.random.uniform(xlim[0],xlim[1],size=n)
+ return np.column_stack([x, y])
+
+def generate_noisy_circle(n=200, radius=1, center=(0, 0), noise_std=0.1):
+ theta = np.random.uniform(0.0, 2.0 * np.pi, size=n)
+ ux = np.cos(theta)
+ uy = np.sin(theta)
+ cx, cy = center
+ base = np.column_stack([cx + radius * ux, cy + radius * uy])
+ noise = np.random.rand(n,2)
+ points = base + noise_std*radius*noise
+ return points
+
+P1 = generate_noisy_circle()
+P2 = np.vstack((P1, generate_random_points()))
+rips_complex = gudhi.RipsComplex(points=P1)
+st = rips_complex.create_simplex_tree(max_dimension=2)
+a = st.persistence()
+gudhi.plot_persistence_barcode(a, legend=True)
+plt.show()
+rips_complex = gudhi.RipsComplex(points=P2)
+st = rips_complex.create_simplex_tree(max_dimension=2)
+a = st.persistence()
+gudhi.plot_persistence_barcode(a, legend=True)
+plt.show()
+\end{lstlisting}
+
+P1 is a noisy circle, with only one connected component and one cycle. So only 1-dim of $PH_0$ and $PH_1$ will live for a long time. But these outlier points will lead to bigger long  living persistent homology for that some of them may be far from the circle, forming new connected components and edges when filtration index is small.
+
+Persistence diagram of P1 is as follows.
+
+\begin{figure}[h] 
+\centering 
+\includegraphics[width=1\textwidth]{5} 
+\end{figure}
+
+The following persistence diagram is P2's. The influence of outlier points is obvious.
+\begin{figure}[h] 
+\centering 
+\includegraphics[width=1\textwidth]{6} 
+\end{figure}
+
+ \section{Recover influence of “outlier” points}
+
+As we have mentioned above,  the influence derive from some of outlier points far from the circle. So we just need to remove points far from other points.
+
+ Let neighbour of point $a$ be the area where the distance between $a$ and all points in this area is less than 0.3. If a point's neighbour only cotain less than five points, we remove this "outlier" point (although it may not be the 20 "outlier" points we added before).
+
+\begin{lstlisting}
+D = cdist(P2, P2)
+neighbors = (D < 0.3).sum(axis=1)
+clean = neighbors > 5
+P2_clean = P2[clean]
+rips_complex = gudhi.RipsComplex(points=P2_clean)
+st = rips_complex.create_simplex_tree(max_dimension=2)
+a = st.persistence()
+gudhi.plot_persistence_barcode(a, legend=True)
+plt.show()
+\end{lstlisting}
+
+P2\_clean is the "recovered" point could. Its persistence diagram is:
+
+\begin{figure}[h] 
+\centering 
+\includegraphics[width=1\textwidth]{7} 
+\end{figure}
+
+It is similar to persistence diagram of P1. We successfully correct the behaviour of P2.
+\end{document}
